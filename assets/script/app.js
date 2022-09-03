@@ -3,6 +3,7 @@ let addBtn = document.querySelector('#addBtn');
 let listeNameOl = document.querySelector('#listeName-ol');
 let containerLliste = document.querySelector('#container-liste-nonOr');
 let errormessage = document.querySelector('span');
+let btnReset = document.getElementById('resetBtn');
 
 // ajouter des noms à la liste
 addBtn.addEventListener('click', ajouter)
@@ -41,9 +42,15 @@ function ajouter() {
     enterNameInput.value = '';
 }
 
-
 function supprimer(){
-    this.parentElement.remove();    
+    this.parentElement.remove();  
+}
+
+/// Reinitialiser la liste en réinitialisant la page
+btnReset.addEventListener('click',reinitialiser)
+
+function reinitialiser(){
+    reinitialiser.addEventListener('click', location.reload(), false);
 }
 
 ////valider l'input avec la touche entree et l'afficher en dessous
@@ -77,7 +84,7 @@ function melanger() {
 
     // creer une liste li et l'ajouter
     // floor pour recuperer la partie entiere du nombre et non ce qu'il y a apres la virgule
-    // on vide la la liste ol au debut de la fonction pour qu'elle ne se repete pas avce des '' vide.
+    // on vide la la liste ol au debut de la fonction pour qu'elle ne se repete pas avec des '' vide.
     listeAleatoireOl.innerHTML = '';
 
 
@@ -123,7 +130,7 @@ function getGroupe() {
     // empecher qu'il y est un tbleau avec un seul element, qu'une personne ne soit pas seule dans un groupe 
 
     if (tabGroupe[tabGroupe.length - 1].length == 1) {
-        // on supprimie le dernier tableau avec la methode pop () car il n'avait qu'un element
+        // on supprime le dernier tableau avec la methode pop () car il n'avait qu'un element
         let dernier = tabGroupe.pop();
 
         // on recupere le tableau supprimer juste avant et on l'ajoute à l'avant dernier tableau qui devient le dernier tableau
@@ -131,7 +138,7 @@ function getGroupe() {
     }
 
     // grpAleatoireOl.innerHTML = tabGroupe;
-    grpAleatoireOl.innerText = ''; // pour vider le contene, la liste de l'ancien groupe avant meme de creer un nouveau groupe
+    grpAleatoireOl.innerText = ''; // pour vider le conteneur, la liste de l'ancien groupe avant meme de creer un nouveau groupe
     tabGroupe.forEach(function (item) {
         let elm = document.createElement('li');
         elm.classList.add('liste-grp-de')
